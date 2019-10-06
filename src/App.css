@@ -1,0 +1,177 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.App{
+justify-content: center;
+display: flex;}
+
+table{
+  margin: auto;
+}
+ul{
+  list-style: none;
+    display: flex;
+}
+li{
+  padding: 12px;
+  border: 1px solid #ddddcc4d;
+}
+.active{
+  border: 1px solid #ddd;
+}
+
+button {
+    background-color: #fff;
+    border: none;
+    color: #1190ffee !important;
+}
+input {
+  border: 1px solid #ddd;
+}
+.pagination{
+  margin-top: 24px;
+}
+.addInput{
+  margin-top: 28px;
+}
+button .addButton {
+  padding: 5px;
+  border: 1px solid #DDD;
+}
+.inputs {
+  margin-top: 6px;
+}
+ul.pagination {
+  padding: 0px;
+}
+.disabled a {
+  color: #a2a2a2 !important;
+}
+button{
+  cursor: pointer;
+}
+.paginationOuter{
+  display: flex;
+  justify-content: center;
+}
+td{
+  padding: 12px;
+}
+.filterPopupOuter{
+  position: relative;
+}
+.filterPopup{
+  position: absolute;
+}
+.filterPopup{
+  width: 100%;
+}
+.icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.SearchPopup{
+  position: absolute;
+}
+.SearchPopupOuter{
+  position: relative;
+}
+button {
+  margin: 2px;
+  background-color: #ddd0;}
+  thead {
+    background-color: #dddddd52;
+}
+
+tr:hover {
+  background-color: #b4cff769;
+}
+thead:first-child:hover {
+  background-color: #ddd;
+}
+li {
+  padding: 12px;
+  border: 1px solid #ddddcc4d;
+  margin: 2px;
+  border-radius: 8%;
+}
+.searchButtons {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+}
+.searchButtons {
+  border: 1px solid #ddd;
+}
+/* .blur :not(.activerow){
+  filter: blur(3px);
+  pointer-events: none;
+} */
+
+/* .blur :not(.activerow){
+  filter: blur(3px);
+  pointer-events: none;
+}  */
+/* tr.activerow {
+  filter: blur(0px);
+  pointer-events: inherit;
+} */
+.blur tr:not(.activerow){
+  filter: blur(3px);
+  pointer-events: none;
+}
+.blur .addInput, .blur .paginationOuter{
+  filter: blur(3px);
+  pointer-events:none;
+}
+/*
+ .activerow :not(.inputs){
+  filter: blur(3px);
+  pointer-events: none;
+} */
+.icons{
+  font-size: 13px;
+}
+.arrow-up{
+  padding-right: 0px;
+}
+.icons button{
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.filterPopup {
+  background-color: #f9f9f9;
+  border: 1px solid #afafaf;
+  min-width: max-content;
+  padding: 6px;
+  text-align: left;
+}
+input[type='radio'], input[type='checkbox'] {
+  margin: 6px;
+}
+
+.filteredbuttons {
+  display: flex;
+  justify-content: space-between;
+}
