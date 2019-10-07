@@ -24,28 +24,37 @@ class FilterPopup extends React.Component{
       };
 
     handleChange = (e) =>{
-        console.log(e.target.name,e.target.checked,e.target.value)
+         
+        this.props.handleCheckChange(e.target.value,this.props.index,e.target.checked)
     }
 
     handlefilterList=(filters)=>{
-        this.props.handleFilterInfo(filters,this.props.index)
+        // this.props.handleFilterInfo(filters,this.props.index)
+        
         let filtered = filters.map((filter,index) =>{
         //    return(<input type="radio" key={index} value={filter.value}>{filter.value})
-        console.log(filter)
+           
         return (<p><input
             key={index}
             id="my_id"
             type="checkbox"
-            value={filter}
-            name={filter}
+            value={index}
+            name={filter.text}
             onChange={this.handleChange}
-            // checked={this.props.isChecked[index]}
-            />{filter}</p>
+            checked={this.props.isChecked[index].isActive}
+            />{filter.text}</p>
         )
-        })
+        // 
+     })
         return filtered
     } 
 
+    handleReset = ()=>{
+        this.props.handleFilterReset(this.props.index)
+    }
+    handleOk=()=>{
+        this.props.handleFilterOk(this.props.index)
+    }
     render(){
          
         return(
@@ -54,9 +63,9 @@ class FilterPopup extends React.Component{
             {this.handlefilterList(this.props.filters)}</div>
             <div className="filteredbuttons">
                 <div className="filteredDone">
-                  <button>Ok</button></div>
+                  <button onClick={this.handleOk}>Ok</button></div>
                   <div className="filteredReset">
-                  <button>Reset</button>
+                  <button onClick={this.handleReset}>Reset</button>
                     </div>
             </div>
             </div>

@@ -195,7 +195,8 @@ class Table extends React.Component{
       this.setState({blur:boole})
      } 
    
-  async handleSearchOk(arrayOk,resetIndex){
+  
+ async handleSearchOk(arrayOk,resetIndex){
    
     let exampleItemscopy = this.state.exampleItemsMaster 
     // let exampleItemsArray = this.state.exampleItemsArray
@@ -228,10 +229,13 @@ class Table extends React.Component{
     await this.setState({exampleItems:handleArray})
     
 
+  } 
+  
+  handleFilterMaster=(matrix,index)=>{
+    console.log(matrix,index)
   }
 
-    
-    render(){
+  render(){
       
         return(
           
@@ -243,6 +247,7 @@ class Table extends React.Component{
                       handleSort={this.handleSort}
                       handleSearchOk={this.handleSearchOk}
                       handleSearchReset={this.handleSearchReset}
+                      handleFilterMaster={this.handleFilterMaster}
                     />
                     <Content 
                       handleDelete={this.handleDelete} 
@@ -273,6 +278,6 @@ class Table extends React.Component{
                         </div>
             </div>
         );
-    }
+  }
 }
 export default Table

@@ -35,11 +35,9 @@ render(){
   return(  
     <div className="App">
      
-      <Table 
-     
+      <Table
       data={this.state.exampleItems} 
       columns={this.props.columns}
-      handleSearchOk={this.handleSearchOk}
       />
     </div>
   );

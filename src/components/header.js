@@ -26,17 +26,34 @@ class Header extends React.Component{
         this.handleFilter = this.handleFilter.bind(this)
         this.togglePopupFilter=this.togglePopupFilter.bind(this)
         this.handleSearchOk = this.handleSearchOk.bind(this)
+        this.handleFilterReset = this.handleFilterReset.bind(this)
+    }
+    componentDidMount(){
+        let filterValues = this.state.filterValues
+        let readycolumns = this.props.columns.map((column,index) =>{
+        if(column.filters){
+            let result = column.filters.map(function(el) {
+                let o = Object.assign({}, el);
+                o.isActive = false;
+                return o;
+              })
+              filterValues[index] = result
+            }      
+        })
+        if(filterValues !== this.state.filterValues){
+        this.setState({})
+        }
     }
 
-    componentWillMount(){
+    // componentWillMount(){
       
        
-        // var myGrid = [...Array(filters.length).fill(false)]
-        // let filterInitial = this.state.isChecked
-        // filterInitial.push(myGrid)
-        // this.setState({isChecked:filterInitial})
-        // console.log(filters,myGrid)
-    }
+    //     // var myGrid = [...Array(filters.length).fill(false)]
+    //     // let filterInitial = this.state.isChecked
+    //     // filterInitial.push(myGrid)
+    //     // this.setState({isChecked:filterInitial})
+    //     // console.log(filters,myGrid)
+    // }
 
     handleSorter(index){
         return (
@@ -72,23 +89,32 @@ class Header extends React.Component{
         this.props.handleSearchOk(searchValuesOk)
         // this.props.handleSearchReset(searchValuesOk,index)
     }
-    handleFilterInfo = (filterValue,index) =>{
-        console.log(index)
+   
+    handleCheckChange=(index,superindex,isChecked)=>{
+        
         let filterValues = this.state.filterValues
-        filterValues[index]=filterValue
-        console.log(filterValues)
-        if(this.state.filterValues !== filterValues){
-            this.setState({filterValues:filterValues})
-        }
+        filterValues[superindex][index].isActive=isChecked
+        this.setState({})
+       
     }
+
+    async handleFilterReset(index){
+        let filterValues = this.state.filterValues
+        let filterValues2 = filterValues[index].map((filter,index) =>{
+            filter.isActive = false
+            return filter
+        })
+        filterValues[index]=filterValues2
+        await this.setState({})
+        // this.closePopupFilter(index)
+    } 
+
+    handleFilterOk=(index)=>{
+        this.props.handleFilterMaster(this.state.filterValues,index)
+    }
+
     handleFilter(filters,index){
-        // var myGrid = [...Array(3)].map(e => Array(3).fill(false));
-        
-        
-        // let filterValues = this.state.filterValues
-        // filterValues[index] = filters
-        // this.setState({filterValues:filterValues}) 
-        // console.log(this.state.filterValues)
+       
 
         return(
         
@@ -103,8 +129,11 @@ class Header extends React.Component{
                 closePopup={this.closePopupFilter} 
                 index={index} 
                 filters={filters} 
-                // isChecked={this.state.isChecked[index]}
-                handleFilterInfo={this.handleFilterInfo}
+                isChecked={this.state.filterValues[index]}
+                handleCheckChange={this.handleCheckChange}
+                handleFilterReset={this.handleFilterReset}
+                handleFilterOk={this.handleFilterOk}
+                // handleFilterInfo={this.handleFilterInfo}
              />:null}
             
             {/* {(this.state.filter[index] === true) ? <filterPopup />:null} */}
@@ -165,8 +194,8 @@ class Header extends React.Component{
         filters[index] = !this.state.filters[index];
         this.setState({});
     }
+    
     render(){
-        // console.log(this.state.searchValuesOk)
         
         return(
             <thead>

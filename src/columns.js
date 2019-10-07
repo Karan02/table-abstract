@@ -13,7 +13,7 @@ const columns = [
     {
       title: 'gender',
       dataIndex: 'gender',
-      filters: [ 'Male' , 'Female' ],
+      filters: [ {text:'Male'} ,{text:'Female'} ],
       width: '200px',
       search:true,
       sorter:true,
@@ -22,7 +22,7 @@ const columns = [
       title: 'address',
       dataIndex: 'address',
       search: true,
-      filters: ['London', 'London' , 'hanover' , 'dallas'],
+      filters: [{text:'London'}, {text:'London'} , {text:'hanover'} ,{text: 'dallas'}],
       width:"350px",
      
        
