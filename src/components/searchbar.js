@@ -1,14 +1,13 @@
 import React from "react"
-import{Icon} from "antd"
+ 
 
 class Searchbar extends React.Component{
     
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             search: this.props.searchValue
         }
-        this.handleReset = this.handleReset.bind(this)
     }
 
     componentWillReceiveProps(props, state){
@@ -28,35 +27,36 @@ class Searchbar extends React.Component{
 
     handleClickOutside = (event) => {
         
-        if(this.node.contains(event.target)) {  return}
-        else{     
-            this.props.closePopup(this.props.index);    
-          }
+      if(this.node.contains(event.target)) { 
+        return
+      }
+      else{     
+          this.props.closePopup(this.props.index);    
+      }
     };
 
-    handleChange=(e)=>{
-        // this.setState({search:e.target.value})
-        
+    handleChange = (e) => {
         this.props.setSearchValues(e.target.value,this.props.index)
     }
 
-    async handleReset(){
-        await this.props.resetSearchValue(this.props.index);
+    handleReset = () => {
+        this.props.resetSearchValue(this.props.index);
         
     }
   
-    handleSearchOk=()=>{
+    handleSearchOk = () => {
         this.props.handleSearchOk(this.props.index)
     }
     render(){
         
         return(
         <div className="SearchPopup"  ref={node => this.node = node}>
-           <div className="searchInput"><input type="text" value={this.state.search} onChange={this.handleChange} /></div>
-           <div className="searchButtons">
+           <div className="searchInput">
+              <input type="text" value={this.state.search} onChange={this.handleChange} /></div>
+              <div className="searchButtons">
                <button  className="searchOK" onClick={this.handleSearchOk}>ok</button>
                <button className="searchReset" onClick={this.handleReset}>reset</button>
-           </div>
+              </div>
         </div>
         ); 
     }

@@ -14,19 +14,18 @@ class Pagination extends React.Component {
     constructor(props) {
         super(props);
         this.state = { pager: {} };
-        // defaultProps.initialPage = this.props.pageNumber;
     }
     
     componentWillMount() {
-        //set page if items array isn't empty
+        
         if (this.props.items && this.props.items.length) {
             this.setPage(this.props.pageNumber);
-            // this.props.currentPage(this.state.pager.currentPage);
+            
      }
   }
 
     componentWillUpdate(){
-    if(this.props.pageNumber !== this.state.pager.currentPage){
+    if(this.props.pageNumber !== this.state.pager.currentPage) {
         this.props.currentPage(this.state.pager.currentPage);  
     }
        
@@ -34,20 +33,15 @@ class Pagination extends React.Component {
 
     componentDidUpdate(prevProps,prevState) { 
        
-        if (this.props.items !== prevProps.items) {
-            
-            this.setPage(this.props.pageNumber);   
-        //    this.props.currentPage(this.state.pager.currentPage);  
-      }if(this.props.pageNumber !== this.state.pager.currentPage){
+      if (this.props.items !== prevProps.items) {
+        this.setPage(this.props.pageNumber);   
+      }
+      if (this.props.pageNumber !== this.state.pager.currentPage) {
         this.props.currentPage(this.state.pager.currentPage);  
-    }
+      }
        
     }
-    // componentWillReceiveProps (newProps) {
-    //       if (this.props.items !== newProps.items) {
-    //         this.setPage(this.props.initialPage);     
-    //     }  
-    // }
+   
    
     setPage(page) {
         
@@ -57,8 +51,7 @@ class Pagination extends React.Component {
            //this return statement is very important
             // return;
         }
-        
-        
+            
         // get new pager object for specified page
         pager = this.getPager(items.length, page);
          
@@ -132,11 +125,7 @@ class Pagination extends React.Component {
     render() { 
        
         var pager = this.state.pager;
-
-        if (!pager.pages || pager.pages.length <= 1) {
-            // don't display pager if there is only 1 page
-            // return null;
-        }
+ 
         
         
         return (

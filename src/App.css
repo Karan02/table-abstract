@@ -175,3 +175,6 @@ input[type='radio'], input[type='checkbox'] {
   display: flex;
   justify-content: space-between;
 }
+tr:last-child:hover {
+  background-color: #fff;
+}

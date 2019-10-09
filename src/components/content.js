@@ -1,20 +1,33 @@
 import React from "react"
 import Row from "./row"
+import Pagination from "./pagination"
 
 class Content extends React.Component{
 
-    // constructor(props){
-    //     super(props)
-    //     this.state={
-    //         blur:false
-    //     }
-    // }
-    handleContent(data,columns){
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentPage:1,
+            data:this.props.data,
+            pageOfItems:[],
+            topIndex:0, 
+        }
+    }
+  componentDidUpdate(prevProps) {
         
-        const onProductTableUpdate = this.props.onProductTableUpdate
-        const fireblur = this.props.fireblur
-        const handleDelete = this.props.handleDelete
-        let count=this.props.currentIndex
+    if(prevProps.data !== this.props.data){
+            this.setState({
+              data:this.props.data
+            })
+    }
+  }
+
+  handleContent(data,columns){
+        
+        const { onProductTableUpdate,fireblur,handleDelete }= this.props
+        // let count=this.props.currentIndex
+        let count = this.state.topIndex
+        
         let row = data.map(function(row,index){
             count++
             return <Row 
@@ -25,21 +38,45 @@ class Content extends React.Component{
             onProductTableUpdate={onProductTableUpdate}
             fireblur={fireblur}
             />
-
         })
         return row
-    }
-    // fireblur=()=>{
-    //     this.setState({blur:true})
-    //   } 
-    render(){
-        return(
-            <tbody 
-            // className={this.state.blur ? "blur":null}
-            >
-                {this.handleContent(this.props.data,this.props.columns)}
-            </tbody>
+  }
 
+  onChangePage = (pageOfItems) => {
+        // update state with new page of items
+          this.setState({pageOfItems: pageOfItems});
+  }
+
+  currentPageSetter = (currentPage) => {
+        this.setState({
+          currentPage:currentPage,
+        })
+  }
+  startIndex = (index) => {
+        this.setState({ 
+          topIndex:index
+         })
+        // this.props.startIndex(index) 
+      }       
+  render(){
+         
+        return(
+            <tbody>
+                {this.handleContent(this.state.pageOfItems,this.props.columns)}
+                <tr >
+                    <td colSpan={`${this.props.columns.length}`} >
+                    <div className="paginationOuter">
+                        <Pagination 
+                          items={this.state.data}
+                          onChangePage={this.onChangePage} 
+                          pageNumber={this.state.currentPage}
+                          currentPage={this.currentPageSetter}
+                          startIndex={this.startIndex}
+                          />
+                    </div>
+                  </td>
+                </tr>
+            </tbody>
         );
     }
 }

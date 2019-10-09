@@ -57,7 +57,7 @@ class Header extends React.Component{
 
     handleSorter(index){
         return (
-            <Sorter index={index} handleSort={this.props.handleSort} />
+            <Sorter key={index} index={index} handleSort={this.props.handleSort} />
         )
     }
      togglePopupFilter(index){
@@ -107,6 +107,8 @@ class Header extends React.Component{
         filterValues[index]=filterValues2
         await this.setState({})
         // this.closePopupFilter(index)
+        this.props.handleFilterMaster(this.state.filterValues,index)
+
     } 
 
     handleFilterOk=(index)=>{
@@ -126,6 +128,7 @@ class Header extends React.Component{
              {this.state.filters[index] ? 
              
              <FilterPopup 
+                key={index}
                 closePopup={this.closePopupFilter} 
                 index={index} 
                 filters={filters} 
@@ -155,6 +158,7 @@ class Header extends React.Component{
             <Icon type="search" onClick={() => this.toggleSearchFilter(index)}/>
             {this.state.searches[index] ? 
             <SearchBar 
+                key={index}
                 searchValue={this.state.searchValues[index]}
                 closePopup={this.closePopupSearch} 
                 index={index} 
@@ -194,7 +198,6 @@ class Header extends React.Component{
         filters[index] = !this.state.filters[index];
         this.setState({});
     }
-    
     render(){
         
         return(

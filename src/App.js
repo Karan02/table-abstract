@@ -5,42 +5,24 @@ import Table from "./components/table"
 import { func } from 'prop-types';
 
 class App extends React.Component{
- constructor(props){
-   super(props)
-   this.state={exampleItems:this.props.data}
-  //  this.handleSearchOk = this.handleSearchOk.bind(this)
+ constructor(props) {
+   super(props);
+   this.state = {
+      exampleItems:this.props.data 
+    };
  }
-  // async handleSearchOk  (searchArray,index){
-  //   let exampleItems2=[];  
-  //   let exampleItems = this.state.exampleItems.map(function (item,index2) {
-      
-  //     let value=item[Object.keys(item)[index]]
-      
-  //     let valueItem=value.toLowerCase();
-  //     let valueOk=searchArray[index].toLowerCase();
-      
-  //     if(valueOk.indexOf(valueItem) === 0){
-  //       exampleItems2.push(item)
-  //       return item;
-  //     }
-  //     else{
-  //       return null
-  //     }
-  //   })
-  //   console.log(exampleItems2)
-  //   await this.setState({exampleItems:exampleItems2})
-  // }
-render(){
-  
-  return(  
-    <div className="App">
-     
-      <Table
-      data={this.state.exampleItems} 
-      columns={this.props.columns}
-      />
-    </div>
-  );
+
+  render() {
+    const { columns } = this.props;
+    const { exampleItems } = this.state;
+    return(  
+      <div className="App">
+        <Table
+          data={exampleItems} 
+          columns={columns}
+        />
+      </div>
+    );
   }
 }
 

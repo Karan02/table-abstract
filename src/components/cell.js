@@ -8,15 +8,15 @@ class Cell extends React.Component{
             
              this.props.isInput ? 
              <td className="inputs">
-            <input type="text" 
-             value={this.props.value} 
-             name={this.props.id} 
-             id={this.props.rowIndex} 
-             onChange={this.props.onProductTableUpdate}
-             />
-             
+                <input type="text" 
+                value={this.props.value} 
+                name={this.props.id} 
+                id={this.props.rowIndex} 
+                onChange={this.props.onProductTableUpdate}
+                />{console.log(this.props.rowIndex)}
              </td>:
              <td>{this.props.value}</td>
+             
             
         );
     }

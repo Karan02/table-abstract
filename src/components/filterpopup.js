@@ -2,11 +2,6 @@ import React from "react"
 
 class FilterPopup extends React.Component{
 
-    constructor(props){
-        super(props);
-       
-    }
-
     componentDidMount() {
         document.addEventListener("click", this.handleClickOutside);
     }
@@ -16,24 +11,20 @@ class FilterPopup extends React.Component{
     }
 
     handleClickOutside = (event) => {
-        if(this.node.contains(event.target)) {  return}
+        if(this.node.contains(event.target)) { 
+            return
+        }
         else{     
             this.props.closePopup(this.props.index);
-            
-          }
-      };
+        }
+    };
 
     handleChange = (e) =>{
-         
         this.props.handleCheckChange(e.target.value,this.props.index,e.target.checked)
     }
 
     handlefilterList=(filters)=>{
-        // this.props.handleFilterInfo(filters,this.props.index)
-        
-        let filtered = filters.map((filter,index) =>{
-        //    return(<input type="radio" key={index} value={filter.value}>{filter.value})
-           
+        let filtered = filters.map((filter,index) =>{     
         return (<p><input
             key={index}
             id="my_id"
@@ -43,31 +34,32 @@ class FilterPopup extends React.Component{
             onChange={this.handleChange}
             checked={this.props.isChecked[index].isActive}
             />{filter.text}</p>
-        )
-        // 
-     })
+            )
+        })
         return filtered
     } 
 
-    handleReset = ()=>{
+    handleReset = () => {
         this.props.handleFilterReset(this.props.index)
     }
-    handleOk=()=>{
+    handleOk = () => {
         this.props.handleFilterOk(this.props.index)
     }
     render(){
          
         return(
             <div className="filterPopup" ref={node => this.node = node}>
-            <div className="filteredValues">
-            {this.handlefilterList(this.props.filters)}</div>
-            <div className="filteredbuttons">
-                <div className="filteredDone">
-                  <button onClick={this.handleOk}>Ok</button></div>
-                  <div className="filteredReset">
-                  <button onClick={this.handleReset}>Reset</button>
+              <div className="filteredValues">
+                  {this.handlefilterList(this.props.filters)}
+              </div>
+              <div className="filteredbuttons">
+                    <div className="filteredDone">
+                      <button onClick={this.handleOk}>Ok</button>
                     </div>
-            </div>
+                    <div className="filteredReset">
+                      <button onClick={this.handleReset}>Reset</button>
+                    </div>
+              </div>
             </div>
         );
     }
