@@ -1,8 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Table from "./components/table"
-import { func } from 'prop-types';
 
 class App extends React.Component{
  constructor(props) {

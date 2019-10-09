@@ -3,11 +3,9 @@ import {Icon} from "antd"
 class Sorter extends React.Component{
 
   handleUpper = () => {
-    
     this.props.handleSort("des",this.props.index)
   }
   handleDown = () => {
-    
     this.props.handleSort("asc",this.props.index)
   }
   render(){

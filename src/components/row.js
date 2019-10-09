@@ -10,12 +10,14 @@ class Row extends React.Component{
             id:this.props.id,    
         }
     }
+
     togglePopupOk = () => {  
         this.setState({  
           isInput: !this.state.isInput  
         });  
         this.props.fireblur(false)
      } 
+
     togglePopupEdit = () => {  
         this.setState({  
           isInput: !this.state.isInput  
@@ -34,7 +36,6 @@ class Row extends React.Component{
             rowIndex={rowIndex}  
             id={rowKeys[index]} 
             isInput={isInput}
-            // key={row[cell]} 
             value={row[cell]} /> 
         })
         return cells
@@ -63,10 +64,10 @@ class Row extends React.Component{
         return(
             <tr className="eachRow" className={this.state.isInput ? 'activerow' : ''}>
                 {this.handleCell(this.props.row)}
-                {<td>
+                <td>
                     <button onClick={this.handleDelete}>Delete</button>
                     {this.handleEditOk()}
-                </td>}
+                </td>
             </tr>
         );
     }

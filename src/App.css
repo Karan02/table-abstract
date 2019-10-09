@@ -51,9 +51,7 @@ input {
 .pagination{
   margin-top: 24px;
 }
-.addInput{
-  margin-top: 28px;
-}
+
 button .addButton {
   padding: 5px;
   border: 1px solid #DDD;

@@ -1,11 +1,8 @@
 import React from "react";
 
 class Cell extends React.Component{
-
-    render(){
-       
+    render(){       
         return(
-            
              this.props.isInput ? 
              <td className="inputs">
                 <input type="text" 
@@ -15,12 +12,8 @@ class Cell extends React.Component{
                 onChange={this.props.onProductTableUpdate}
                 />{console.log(this.props.rowIndex)}
              </td>:
-             <td>{this.props.value}</td>
-             
-            
+             <td>{this.props.value}</td>      
         );
     }
-
-
 }
 export default Cell

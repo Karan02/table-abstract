@@ -11,9 +11,7 @@ class Table extends React.Component {
         exampleItemsMaster: this.props.data,
         exampleItems:this.props.data,  
         pageOfItems: [],  
-        // currentPage:1,
         addContent:{},
-        // topIndex:0, //each page top index
         blur:false,
         arrayOk:[],
         arrayFilter:[],
@@ -29,14 +27,14 @@ class Table extends React.Component {
         })
     }
 
-    handleChange=(e)=>{
+    handleChange = (e) => {
       e.preventDefault();
       let addContent = this.state.addContent
       addContent[e.target.name] =e.target.value 
        this.setState({addContent:addContent})  
     }
     
-    handleSubmit=(e)=>{
+    handleSubmit = (e) => {
       e.preventDefault();
       // console.log(this.state.addContent)
       this.AddEntries(this.state.addContent)
@@ -145,20 +143,12 @@ class Table extends React.Component {
     this.setState({arrayOk:arrayOk})
   } 
   
-  handleFilterMaster=(matrix,index)=> {
+  handleFilterMaster = (matrix,index) => {
     this.setState({arrayFilter:matrix})
   }
 
-  // startIndex = (index) => {
-  //   if(this.state.topIndex !== index){
-  //   this.setState({ 
-  //     topIndex:index
-  //    })
-  //   }
-  //    console.log(index)
-  // }     
-
   render(){
+
     let handleArray = this.state.exampleItems 
     for (let i = 0; i < this.state.arrayOk.length; i++) {
       if(this.state.arrayOk[i] && this.state.arrayOk[i]!=="") {
@@ -167,6 +157,7 @@ class Table extends React.Component {
         });
       }
     }
+
     let pushArray = handleArray
     let intermediateArray = []
     let intermediateArray2 = []
@@ -182,14 +173,13 @@ class Table extends React.Component {
           }
         });
     });
-    
 
-   if(intermediateArray2){
-    // console.log(intermediateArray2,"karan")
+   if(!intermediateArray2){
+    // continue your work here
    }
+
     return(
         <div>
-
         <div  className={this.state.blur ? "blur":null}>
             <table>
             
@@ -207,7 +197,6 @@ class Table extends React.Component {
                 handleDelete={this.handleDelete}
                 columns={this.props.columns}
                 data={intermediateArray2}
-                // currentIndex={this.state.topIndex}
                 onProductTableUpdate={this.onProductTableUpdate}
                 fireblur={this.fireblur}
               />:

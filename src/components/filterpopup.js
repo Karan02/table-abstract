@@ -19,11 +19,11 @@ class FilterPopup extends React.Component{
         }
     };
 
-    handleChange = (e) =>{
+    handleChange = (e) => {
         this.props.handleCheckChange(e.target.value,this.props.index,e.target.checked)
     }
 
-    handlefilterList=(filters)=>{
+    handlefilterList = (filters) => {
         let filtered = filters.map((filter,index) =>{     
         return (<p><input
             key={index}

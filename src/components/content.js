@@ -25,9 +25,7 @@ class Content extends React.Component{
   handleContent(data,columns){
         
         const { onProductTableUpdate,fireblur,handleDelete }= this.props
-        // let count=this.props.currentIndex
-        let count = this.state.topIndex
-        
+        let count = this.state.topIndex 
         let row = data.map(function(row,index){
             count++
             return <Row 
@@ -43,7 +41,6 @@ class Content extends React.Component{
   }
 
   onChangePage = (pageOfItems) => {
-        // update state with new page of items
           this.setState({pageOfItems: pageOfItems});
   }
 
@@ -52,19 +49,19 @@ class Content extends React.Component{
           currentPage:currentPage,
         })
   }
+
   startIndex = (index) => {
         this.setState({ 
           topIndex:index
          })
-        // this.props.startIndex(index) 
-      }       
-  render(){
-         
+  }    
+
+  render() {    
         return(
             <tbody>
                 {this.handleContent(this.state.pageOfItems,this.props.columns)}
                 <tr >
-                    <td colSpan={`${this.props.columns.length}`} >
+                    <td colSpan={`${this.props.columns.length+1}`} >
                     <div className="paginationOuter">
                         <Pagination 
                           items={this.state.data}

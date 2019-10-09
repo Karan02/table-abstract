@@ -1,10 +1,5 @@
 import React from "react"
 
-// const propTypes = {
-//     // items: React.PropTypes.array.isRequired,
-//     // onChangePage: React.PropTypes.func.isRequired,
-//     // initialPage: React.PropTypes.number    
-// }
 
 let defaultProps = {
     initialPage:1
@@ -24,10 +19,10 @@ class Pagination extends React.Component {
      }
   }
 
-    componentWillUpdate(){
-    if(this.props.pageNumber !== this.state.pager.currentPage) {
-        this.props.currentPage(this.state.pager.currentPage);  
-    }
+    componentWillUpdate() {
+        if(this.props.pageNumber !== this.state.pager.currentPage) {
+            this.props.currentPage(this.state.pager.currentPage);  
+        }
        
     }
 
@@ -125,9 +120,7 @@ class Pagination extends React.Component {
     render() { 
        
         var pager = this.state.pager;
- 
-        
-        
+  
         return (
             
             <ul className="pagination">
