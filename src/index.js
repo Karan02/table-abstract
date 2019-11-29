@@ -1,14 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import data from "./data"
-import columns from "./columns"
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import data from "./data";
+import columns from "./columns";
 
-ReactDOM.render(<App data={data} columns={columns}/>, document.getElementById('root'));
+// 1) This is abstract table component you just need to pass
+//data and column titles. Check out data.js and column.js for better understanding
+// 2) Filter functionality is in developing stage
+// 3) Install create react app according to here:https://ant.design/docs/react/use-with-create-react-app
+// 4) if you have doubt about how to use it then email me at : krnptl1234@gmail,com
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  <App data={data} columns={columns} />,
+  document.getElementById("root")
+);
